@@ -1,56 +1,38 @@
-# Sample workflow for building and deploying a VitePress site to GitHub Pages
-#
-name: Deploy VitePress site to Pages
-
-on:
-  # Runs on pushes targeting the `main` branch. Change this to `master` if you're
-  # using the `master` branch as the default branch.
-  push:
-    branches: [main]
-
-  # Allows you to run this workflow manually from the Actions tab
-  workflow_dispatch:
-
-# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
-permissions:
-  contents: read
-  pages: write
-  id-token: write
-
-# Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
-# However, do NOT cancel in-progress runs as we want to allow these production deployments to complete.
-concurrency:
-  group: pages
-  cancel-in-progress: false
-
-jobs:
-  # Build job
-  build:
-    runs-on: ubuntu-latest
+on: push # 触发此文件运行的条件
+name: CI/CD # 此工作流程（workflow）的名字
+build:
+  FTP-Deploy-Action:
+    name: CI&CD # 此任务（job）的名字
+    runs-on: ubuntu-latest # 运行环境
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+      - uses: actions/checkout@master # 切换分支到main
         with:
-          fetch-depth: 0 # Not needed if lastUpdated is not enabled
-      # - uses: pnpm/action-setup@v3 # Uncomment this if you're using pnpm
-      # - uses: oven-sh/setup-bun@v1 # Uncomment this if you're using Bun
-      - name: Setup Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20
-          cache: npm # or pnpm / yarn
-      - name: Setup Pages
-        uses: actions/configure-pages@v4
-      - name: Install dependencies
-        run: npm ci # or pnpm install / yarn install / bun install
-      - name: Build with VitePress
-        run: npm run docs:build # or pnpm docs:build / yarn docs:build / bun run docs:build
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: docs/.vitepress/dist
+          fetch-depth: 2
 
-  # Deployment job
+      - name: Use Node.js 18.x
+        uses: actions/setup-node@v2.1.4 # 使用node环境
+        with:
+          node-version: '18.x' # 版本12
+
+      # - name: Cache node modules
+      #   id: cache # 缓存id
+      #   uses: actions/cache@v2
+      #   env:
+      #     cache-name: cache-node-modules # 缓存名字
+      #   with:
+      #     path: node_modules # 缓存路径
+      #     key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('package.json') }} # 缓存标识
+
+      - name: Install pnpm
+        run: npm i pnpm -g
+
+      - name: Install Dependencies
+        # if: steps.cache.outputs.cache-hit != 'true' # 如果没有缓存的话
+        run: pnpm i # 安装依赖
+
+      - name: Build Packages
+        run: pnpm run build #  打包文件
+
   deploy:
     environment:
       name: github-pages
