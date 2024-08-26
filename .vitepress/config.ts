@@ -73,7 +73,7 @@ async function config() {
         // },
       ],
       socialLinks: [
-        { icon: "github", link: "https://github.com/Sdot-Python" },
+        { icon: "github", link: "https://github.com/quwang123" },
         // { icon: "twitter", link: "https://twitter.com/qingshuihe1" },
         {
           icon: {
