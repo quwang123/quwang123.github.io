@@ -5,7 +5,7 @@ import mathjax3 from "markdown-it-mathjax3";
 
 async function config() {
   return {
-    outDir: 'docs/.vitepress/dist',
+    outDir: 'docs',
     lang: "en-US",
     title: "Qwer",
     description: "Home of Qwer",
@@ -43,7 +43,7 @@ async function config() {
     // cleanUrls: "with-subfolders",
     lastUpdated: false,
     themeConfig: {
-      repo: "Sdot-Python\/qwer.github.io",
+      base: "/",
       logo: "/horse.svg",
       avator: "/avator.jpg",
       search: {
