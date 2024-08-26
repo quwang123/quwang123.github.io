@@ -48,7 +48,7 @@ export function useYearSort(post: Post[]) {
 }
 
 export function getHeaders(range: any) {
-  const headers = [...document.querySelectorAll(".VPDoc h2,h3,h4,h5,h6")]
+  const headers = [...document.querySelectorAll(".VPDoc h1,h2,h3,h4,h5,h6")]
     .filter((el) => el.id && el.hasChildNodes())
     .map((el) => {
       const level = Number(el.tagName[1]);

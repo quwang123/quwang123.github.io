@@ -2,14 +2,14 @@
   <div class="category" v-if="headers.length > 0">
     <ul class="list">
       <li class="header" v-for="item in headers">
-        <a :href="item.link" class="header-h2" v-if="item.level === 2">{{
+        <a :href="item.link" class="header-h1" v-if="item.level === 1">{{
           item.title
         }}</a>
-        <ul v-if="item.level === 3">
+        <ul v-if="item.level === 2">
           <li class="header">
             <a
               :href="item.link"
-              :class="['header-h3', { showIndent: showIndent }]"
+              :class="['header-h2', { showIndent: showIndent }]"
               >{{ item.title }}</a
             >
           </li>
@@ -29,7 +29,7 @@ const showIndent = ref(false);
 onContentUpdated(() => {
   headers.value = getHeaders(frontmatter.value.outline ?? theme.value.outline);
   showIndent.value = headers.value.some((header) => {
-    return header.level === 2;
+    return header.level === 1;
   });
 });
 </script>
