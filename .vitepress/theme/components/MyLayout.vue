@@ -6,7 +6,8 @@
     </template>
     <template #doc-after>
       <div>
-        <button @click="back">cd ··</button>
+        <button v-if="prevPost" @click="navigateTo(prevPost.regularPath)">下一篇: {{ prevPost.frontMatter.title }}</button>
+        <button v-if="nextPost" @click="navigateTo(nextPost.regularPath)">上一篇: {{ nextPost.frontMatter.title }}</button>
       </div>
       <Comments />
     </template>
@@ -17,6 +18,7 @@
   <!-- copywright -->
   <CopyWright />
 </template>
+
 <script lang="ts" setup>
 import DefaultTheme from "vitepress/theme";
 import HomeHero from "./HomeHero.vue";
@@ -25,11 +27,36 @@ import Comments from "./Comments.vue";
 import Page from "./Page.vue";
 import Category from "./Category.vue";
 import Title from "./Title.vue";
+import { useData, withBase } from "vitepress";
+import { computed } from "vue";
+import { useYearSort } from "../utils";
+
 const { Layout } = DefaultTheme;
-const back = () => {
-  history.back();
+const { theme, page } = useData();
+const data = computed(() => {
+  return useYearSort(theme.value.posts);
+});
+
+const currentIndex = computed(() => {
+  return data.value.flat().findIndex(article => article.frontMatter.title === page.value.title);
+});
+
+const prevPost = computed(() => {
+  const index = currentIndex.value;
+  return index > 0 ? data.value.flat()[index - 1] : null;
+});
+
+const nextPost = computed(() => {
+  const index = currentIndex.value;
+  console.log(index, data.value.flat().length);
+  return index < data.value.flat().length - 1 ? data.value.flat()[index + 1] : null;
+});
+
+const navigateTo = (path) => {
+  window.location.href = withBase(path);
 };
 </script>
+
 <style scoped>
 button {
   display: inline-block;
