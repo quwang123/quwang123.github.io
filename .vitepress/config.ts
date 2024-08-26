@@ -43,7 +43,7 @@ async function config() {
     // cleanUrls: "with-subfolders",
     lastUpdated: false,
     themeConfig: {
-      // repo: "clark-cui/homeSite",
+      repo: "Sdot-Python\/qwer.github.io",
       logo: "/horse.svg",
       avator: "/avator.jpg",
       search: {
