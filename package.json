@@ -22,7 +22,7 @@
   "scripts": {
     "dev": "vitepress dev",
     "build": "vitepress build",
-    "docs:build": "vitepress build docs",
+    "docs:build": "vitepress build",
     "serve": "vitepress serve"
   },
   "dependencies": {
