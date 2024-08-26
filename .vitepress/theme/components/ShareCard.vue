@@ -1,7 +1,7 @@
 <template>
   <div class="shareCard">
     <h1 class="title">
-      <span>Hi, I'm Qwer 👋</span>
+      <span>Hi, I'm quwang 👋</span>
     </h1>
     <p class="description">
       A backend developer who is building in Golang and Python

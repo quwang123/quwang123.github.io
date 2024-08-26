@@ -6,15 +6,15 @@ import MarkdownIt from "markdown-it";
 import type { FeedOptions, Item } from "feed";
 import { Feed } from "feed";
 
-const DOMAIN = "https://qwer.github.io";
+const DOMAIN = "https://quwang.github.io";
 const AUTHOR = {
-  name: "Qwer",
+  name: "quwang",
   email: "282073529@qq.com",
   link: DOMAIN,
 };
 const OPTIONS: FeedOptions = {
-  title: "Qwer",
-  description: "Qwer' Blog",
+  title: "quwang",
+  description: "quwang' Blog",
   id: `${DOMAIN}/`,
   link: `${DOMAIN}/`,
   copyright: "MIT License",
@@ -24,8 +24,8 @@ const OPTIONS: FeedOptions = {
     rss: DOMAIN + "/feed.xml",
   },
   author: AUTHOR,
-  image: "https://qwer.github.io/horse.svg",
-  favicon: "https://qwer.github.io/horse.svg",
+  image: "https://quwang.github.io/horse.svg",
+  favicon: "https://quwang.github.io/horse.svg",
 };
 
 const markdown = MarkdownIt({
