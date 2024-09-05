@@ -3,6 +3,7 @@ title: Es搜索优化（二）- 相关性 score 计算规则
 description: Es搜索优化（二）- 相关性 score 计算规则
 date: 2023-03-02
 tags:
+  - 后端开发
   - Elasticsearch
 ---
 
