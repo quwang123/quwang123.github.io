@@ -1,7 +1,7 @@
 ---
 title: Langchain-基本概念了解(一)
 description: Langchain-基本概念了解(一)
-date: 2023-05-21
+date: 2024-05-21
 tags:
   - 后端开发
   - 大模型 
