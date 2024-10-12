@@ -140,7 +140,7 @@ func TestCacheStructArray(t *testing.T) {
 
 
 
-第三个是还是自己最近分析 bug 少了，忘记了一些golang的特性，比如面试一直背的切片是引用，底层是公用数组...
+第三个是还是自己最近分析 bug 少了，忘记了一些golang的特性
 
 
 
