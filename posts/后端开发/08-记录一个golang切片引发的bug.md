@@ -1,6 +1,6 @@
 ---
-title: 记录一个 golang 切片引发的 bug
-description: 记录一个 golang 切片引发的 bug
+title: 记录一个golang切片引发的bug
+description: 记录一个golang切片引发的bug
 date: 2024-10-11
 tags:
   - 后端开发
